@@ -548,8 +548,9 @@ Future<Nothing> Docker::run(
   string network;
   switch (dockerInfo.network()) {
     case ContainerInfo::DockerInfo::HOST: network = "host"; break;
-    case ContainerInfo::DockerInfo::BRIDGE: network = "calico"; break;
+    case ContainerInfo::DockerInfo::BRIDGE: network = "bridge"; break;
     case ContainerInfo::DockerInfo::NONE: network = "none"; break;
+    case ContainerInfo::DockerInfo::CALICO: network = "calico"; break;
     default: return Failure("Unsupported Network mode: " +
                             stringify(dockerInfo.network()));
   }
